@@ -32,10 +32,12 @@ def predict(input_volume_path, output_mask_path):
     data = data - np.amin(data)
     data = data / np.amax(data)
 
-    print(input_volume_path)
+    # model path
+    model_path = input_volume_path.split("/")[:-1]
+    model_path = "/".join(model_path) + "/" + "unet_model.h5"
 
     # load trained model
-    ¤model = load_model()
+    model = load_model(model_path, compile=False)
 
     # split data into chunks and predict
     out_dim = (16, 512, 512)
