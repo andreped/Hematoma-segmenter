@@ -33,8 +33,8 @@ def predict(input_volume_path, output_mask_path):
     data = data / np.amax(data)
 
     # model path
-    model_path = input_volume_path.split("/")[:-1]
-    model_path = "/".join(model_path) + "/" + "unet_model.h5"
+    model_path = input_volume_path.split("/")[:-2]
+    model_path = "/".join(model_path) + "/nets/" + "unet_model.h5"
 
     # load trained model
     model = load_model(model_path, compile=False)
