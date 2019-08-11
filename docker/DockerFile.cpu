@@ -44,15 +44,15 @@ RUN mkdir /home/deepinfer/.keras &&# \
 RUN mkdir -p /home/deepinfer/github && \
     mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
-    git clone https://github.com/mehrtash/prostate-segmenter
+    git@github.com:andreped/Hematoma-segmenter.git
 
 # Running test.sh will download the weights and keep them in docker
-RUN cd /home/deepinfer/github/prostate-segmenter && \
+RUN cd /home/deepinfer/github/hematoma-segmenter && \
     bash test.sh
 
 EXPOSE 8888
 
 WORKDIR "/home/deepinfer"
 # CMD ["/bin/bash"]
-ENTRYPOINT ["python3", "/home/andre/Slicer_stuff/Hematoma-Segmenter/fit.py"]
+ENTRYPOINT ["python3", "/home/andre/Slicer_stuff/hematoma-segmenter/fit.py"]
 #ENTRYPOINT ["python","/home/deepinfer/github/prostate-segmenter/fit.py"]
