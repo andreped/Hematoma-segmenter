@@ -1,0 +1,50 @@
+{
+  "name": "CT Hematoma Segmenter",
+  "number_of_inputs": 1,
+  "task": "Segmentation.",
+  "organ": "Head",
+  "modality": "CT",
+  "train_test_data_details": "The model is trained on CT data.",
+  "briefdescription": "Modified 3D UNet architecture used to train DCNN",
+  "detaileddescription": "For more details visit http://4quant.com/Bone-Segmenter",
+  "version": "1.0",
+  "docker":
+    {
+    "dockerhub_repository": "4quant/bone-segmenter-cpu:v1",
+    "digest": "sha256:ccf3ebcca020f10873c76fcdacc73be766180184540d9f164628be1a9e29cdb0",
+    "size": "3.6 GB"
+    }
+  ,
+  "training":
+    {
+      "number of subjects": 25
+    }
+  ,
+  "test":
+    {
+      "number of subjects": 5,
+      "Accuracy": 0.4,
+      "Metric": "Dice Similarity"
+    }
+  ,
+  "pixel_types": "BasicPixelIDTypeList",
+  "vector_pixel_types_by_component": "VectorPixelIDTypeList",
+  "members": [
+    {
+      "name": "InputVolume",
+      "type": "volume",
+      "iotype": "input",
+      "voltype": "ScalarVolume",
+      "default": "std::vector<unsigned int>(3, 64)",
+      "itk_type": "typename FilterType::SizeType"
+    },
+    {
+      "name": "OutputLabel",
+      "type": "volume",
+      "iotype": "output",
+      "voltype": "LabelMap",
+      "default": "std::vector<unsigned int>(3, 64)",
+      "itk_type": "typename FilterType::SizeType"
+    }
+]
+}
