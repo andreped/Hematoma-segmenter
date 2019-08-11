@@ -16,9 +16,12 @@ sys.path.insert(1, SEGMENTER_PATH)
 #from prostatesegmenter.segmenter import Segmenter
 
 def predict(input_volume_path, output_mask_path):
+
+    print("Extracting data...")
     itkimage = sitk.ReadImage(input_volume_path)
     data = sitk.GetArrayFromImage(itkimage)
 
+    print("Pre-processing...")
     # fix orientation
     data = np.rot90(data, k=2, axes=(1, 2))
     data = np.flip(data, axis=2)
@@ -36,8 +39,11 @@ def predict(input_volume_path, output_mask_path):
     model_path = input_volume_path.split("/")[:-2]
     model_path = "/".join(model_path) + "/nets/" + "unet_model.h5"
 
+    print("Loading model...")
     # load trained model
     model = load_model(model_path, compile=False)
+
+    print("Predicting...")
 
     # split data into chunks and predict
     out_dim = (16, 512, 512)
@@ -51,6 +57,7 @@ def predict(input_volume_path, output_mask_path):
     label_nda = np.reshape(preds, (np.prod(preds.shape[:2]),) + preds.shape[2:])[:data.shape[0]]
     label_nda = label_nda[..., 1]
 
+    print("Binarizing to produce label volume")
     th = 0.3
     label_nda[label_nda <= th] = 0
     label_nda[label_nda > th] = 1
@@ -59,6 +66,7 @@ def predict(input_volume_path, output_mask_path):
     label = sitk.GetImageFromArray(label_nda)
     label.CopyInformation(itkimage)
     writer = sitk.ImageFileWriter()
+    print("Writing to file...")
     writer.Execute(label, output_mask_path, True)
 
     #return out
