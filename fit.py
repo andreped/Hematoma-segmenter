@@ -22,8 +22,6 @@ def predict(input_volume_path, output_mask_path):
     # fix orientation
     data = np.rot90(data, k=2, axes=(1, 2))
     data = np.flip(data, axis=2)
-    gt = np.rot90(gt, k=2, axes=(1, 2))
-    gt = np.flip(gt, axis=2)
 
     # HU-clip
     limits = (0, 140)
