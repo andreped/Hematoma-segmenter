@@ -51,10 +51,10 @@ RUN mkdir /home/deepinfer/.keras
 RUN mkdir -p /home/deepinfer/github && \
     mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
-    git clone https://github.com/andreped/Hematoma-segmenter.git
+    git clone https://github.com/andreped/hematoma-segmenter.git
 
 # Running test.sh will download the weights and keep them in docker
-RUN cd /home/deepinfer/github/Hematoma-segmenter && \
+RUN cd /home/deepinfer/github/hematoma-segmenter && \
     bash test.sh
 
 EXPOSE 8888

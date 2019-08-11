@@ -32,6 +32,11 @@ def predict(input_volume_path, output_mask_path):
     data = data - np.amin(data)
     data = data / np.amax(data)
 
+    print(input_volume_path)
+
+    # load trained model
+    ¤model = load_model()
+
     # split data into chunks and predict
     out_dim = (16, 512, 512)
     preds = np.zeros((int(np.ceil(data.shape[0] / out_dim[0])),) + out_dim + (2,)).astype(np.float32)
