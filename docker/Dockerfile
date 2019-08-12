@@ -52,7 +52,11 @@ RUN mkdir -p /home/deepinfer/github && \
     mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
     pip install pip --upgrade && \
-    git clone https://github.com/andreped/hematoma-segmenter.git    
+    git clone https://github.com/andreped/hematoma-segmenter.git
+
+# gain access to data folder
+RUN chown deepinfer /home/deepinfer/data -R
+RUN chown 777 /home/deepinfer/data -R
 
 # Running test.sh will download the weights and keep them in docker
 #RUN cd /home/deepinfer/github/hematoma-segmenter && \
