@@ -82,6 +82,7 @@ def predict(input_volume_path, output_mask_path):
 def main(argv):
     InputVolume = ''
     OutputLabel = ''
+    print("STARTING...")
     try:
         opts, args = getopt.getopt(argv, "hi:o:", ["InputVolume=", "OutputLabel="])
     except getopt.GetoptError:
@@ -98,6 +99,9 @@ def main(argv):
     if InputVolume == '' or OutputLabel == '':
         print('usage: fit.py -InputVolume <InputVolumePath> -OutputLabel <OutputLabelPath>')
         sys.exit()
+
+    print(InputVolume)
+    print(OutputLabel)
     if os.path.isfile(InputVolume) and os.path.isdir(os.path.dirname(OutputLabel)):
         #print("Loading and preprocessing data.")
         #ds = ProstateData()
