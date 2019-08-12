@@ -33,9 +33,11 @@ RUN chown deepinfer $CONDA_DIR -R
 USER deepinfer
 
 # Python
-RUN pip install numpy==1.16.4
 
 # install tensorflow properly on CONDA
+RUN pip install --upgrade pip
+RUN pip install numpy==1.16.4
+RUN pip install tqdm
 RUN conda install -c anaconda tensorflow==1.13.1
 
 RUN pip install --upgrade pip && \	
