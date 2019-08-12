@@ -38,12 +38,12 @@ USER deepinfer
 RUN pip install --upgrade pip
 RUN pip install numpy==1.16.4
 RUN pip install tqdm
-RUN conda install -c anaconda tensorflow==1.13.1
-RUN pip install numpy==1.16.4
+#RUN conda install -c anaconda tensorflow==1.13.1
+#RUN pip install numpy==1.16.4
 
 RUN pip install --upgrade pip && \	
     #pip install theano && \
-    #pip install --ignore-installed tensorflow==1.13.1 && \
+    pip install --ignore-installed tensorflow==1.13.1 && \
     pip install progressbar2 && \
     pip install SimpleITK && \
     pip install ipdb pytest pytest-cov python-coveralls coverage==3.7.1 pytest-xdist pep8 pytest-pep8 pydot_ng && \
@@ -56,7 +56,7 @@ RUN pip install --upgrade pip && \
 RUN mkdir -p /home/deepinfer/github && \
     #mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
-    pip install wcwidth && \
+    pip install pycups && \
     git clone https://github.com/andreped/hematoma-segmenter.git
 
 # make data folder and give deepinfer access to it
