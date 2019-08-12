@@ -51,6 +51,7 @@ RUN mkdir /home/deepinfer/.keras
 RUN mkdir -p /home/deepinfer/github && \
     mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
+    pip install numba && \
     git clone https://github.com/andreped/hematoma-segmenter.git
 
 # gain access to data folder
