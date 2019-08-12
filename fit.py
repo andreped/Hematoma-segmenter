@@ -68,7 +68,9 @@ def predict(input_volume_path, output_mask_path):
     label.CopyInformation(itkimage)
     writer = sitk.ImageFileWriter()
     print("Writing to file...")
-    output_mask_path = "/home/deepinfer/" + "10_label.nrrd"
+    #output_mask_path = "/home/deepinfer/" + "10_label.nrrd"
+    print(input_volume_path)
+    print(output_mask_path)
     writer.Execute(label, output_mask_path, True)
 
     #return out
