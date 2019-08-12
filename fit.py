@@ -58,7 +58,7 @@ def predict(input_volume_path, output_mask_path):
     label_nda = np.reshape(preds, (np.prod(preds.shape[:2]),) + preds.shape[2:])[:data.shape[0]]
     label_nda = label_nda[..., 1]
 
-    print(label_nda)
+    print(np.unique(label_nda))
 
     print("Binarizing to produce label volume")
     th = 0.3
@@ -66,7 +66,7 @@ def predict(input_volume_path, output_mask_path):
     label_nda[label_nda > th] = 255
     label_nda = label_nda.astype(np.uint8)
 
-    print(label_nda)
+    print(np.unique(label_nda))
 
     label = sitk.GetImageFromArray(label_nda)
     itkimage = sitk.Cast(sitk.RescaleIntensity(itkimage), sitk.sitkUInt8)
