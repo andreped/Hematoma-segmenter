@@ -58,7 +58,7 @@ RUN pip install --upgrade pip && \
 RUN mkdir -p /home/deepinfer/github && \
     #mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
-    pip install pycrypto && \
+    pip install patsy && \
     git clone https://github.com/andreped/hematoma-segmenter.git
 
 # make data folder and give deepinfer access to it
