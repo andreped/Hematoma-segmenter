@@ -56,8 +56,7 @@ RUN mkdir -p /home/deepinfer/github && \
 
 RUN mkdir /home/deepinfer/data && \
     chown -R deepinfer /home/deepinfer/data
-    chown -R a+rwx /home/deepinfer/data
-
+    
 # gain access to data folder
 #RUN chown deepinfer /home/deepinfer/data -R
 
