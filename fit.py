@@ -61,11 +61,14 @@ def predict(input_volume_path, output_mask_path):
     print("Binarizing to produce label volume")
     th = 0.3
     label_nda[label_nda <= th] = 0
-    label_nda[label_nda > th] = 1
+    label_nda[label_nda > th] = 255
     label_nda = label_nda.astype(np.uint8)
 
     label = sitk.GetImageFromArray(label_nda)
+    itkimage = sitk.Cast(sitk.RescaleIntensity(itkimage), sitk.sitkUInt8)
     label.CopyInformation(itkimage)
+
+
     writer = sitk.ImageFileWriter()
     print("Writing to file...")
     #output_mask_path = "/home/deepinfer/" + "10_label.nrrd"
