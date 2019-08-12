@@ -40,8 +40,8 @@ RUN pip install numpy==1.16.4
 RUN pip install tqdm
 #RUN conda install -c anaconda tensorflow==1.13.1
 #RUN pip install numpy==1.16.4
-pip install --upgrade pytest
-pip install --upgrade coverage
+RUN pip install --upgrade pytest
+RUN pip install --upgrade coverage
 
 RUN pip install --upgrade pip && \	
     #pip install theano && \
