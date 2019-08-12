@@ -5,6 +5,7 @@ import numpy as np
 import SimpleITK as sitk
 from progressbar import ProgressBar
 from tensorflow.keras.models import load_model
+from tqdm import tqdm
 
 SEGMENTER_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'hematomasegmenter')
 print(SEGMENTER_PATH)
@@ -48,11 +49,11 @@ def predict(input_volume_path, output_mask_path):
     # split data into chunks and predict
     out_dim = (16, 512, 512)
     preds = np.zeros((int(np.ceil(data.shape[0] / out_dim[0])),) + out_dim + (2,)).astype(np.float32)
-    for i in range(int(np.ceil(data.shape[0] / out_dim[0]))):
+    for i in tqdm(range(int(np.ceil(data.shape[0] / out_dim[0]))), "Chunks: "):
         data_out = np.zeros((1,) + out_dim + (1,), dtype=np.float32)
         tmp = data[i * out_dim[0]:i * out_dim[0] + out_dim[0]]
         data_out[0, :tmp.shape[0], ...,0] = tmp
-        preds[i] = model.predict(data_out, verbose=1)
+        preds[i] = model.predict(data_out)
 
     label_nda = np.reshape(preds, (np.prod(preds.shape[:2]),) + preds.shape[2:])[:data.shape[0]]
     label_nda = label_nda[..., 1]
