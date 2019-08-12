@@ -51,7 +51,7 @@ RUN mkdir /home/deepinfer/.keras
 RUN mkdir -p /home/deepinfer/github && \
     #mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
-    pip install pillow && \
+    pip install astropy && \
     git clone https://github.com/andreped/hematoma-segmenter.git
 
 RUN mkdir /home/deepinfer/data && \
