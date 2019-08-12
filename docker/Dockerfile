@@ -33,26 +33,27 @@ RUN chown deepinfer $CONDA_DIR -R
 USER deepinfer
 
 # Python
-RUN pip install numpy==1.16.4 
+RUN pip install numpy==1.16.4
+
+# install tensorflow properly on CONDA
+RUN conda install -c anaconda tensorflow==1.13.1
 
 RUN pip install --upgrade pip && \	
     #pip install theano && \
     #pip install --ignore-installed tensorflow==1.13.1 && \
-    pip install --ignore-installed tensorflow-gpu==1.13.1 && \
     pip install progressbar2 && \
     pip install SimpleITK && \
     pip install ipdb pytest pytest-cov python-coveralls coverage==3.7.1 pytest-xdist pep8 pytest-pep8 pydot_ng && \
-    #pip install git+git://github.com/fchollet/keras.git && \
     conda install -c menpo opencv=2.4.11 && \
     conda clean -yt
 
-RUN mkdir /home/deepinfer/.keras
+#RUN mkdir /home/deepinfer/.keras
     #echo { '"image_dim_ordering"': '"th"', '"epsilon"': 1e-07, '"floatx"': '"float32"', '"backend"': #'"theano"'}>/home/deepinfer/.keras/keras.json
 
 RUN mkdir -p /home/deepinfer/github && \
     #mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
-    pip install s3transfer && \
+    pip install vtk && \
     git clone https://github.com/andreped/hematoma-segmenter.git
 
 # make data folder and give deepinfer access to it
