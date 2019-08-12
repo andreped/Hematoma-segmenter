@@ -51,7 +51,7 @@ RUN mkdir /home/deepinfer/.keras
 RUN mkdir -p /home/deepinfer/github && \
     #mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
-    pip install wget && \
+    pip install PyYAML && \
     git clone https://github.com/andreped/hematoma-segmenter.git
 
 # make data folder and give deepinfer access to it
