@@ -10,8 +10,8 @@
   "version": "1.0",
   "docker":
     {
-    "dockerhub_repository": "andreped/hematoma-segmenter-cpu:v4",
-    "digest": "sha256:5ab1525f78f7a072daf0cbda95f79349d9ae7addcb953167720682e78370486d",
+    "dockerhub_repository": "andreped/hematoma-segmenter-cpu:v5",
+    "digest": "sha256:428159c5a7ceadf6ba9262bcbd13f1e8110c9fe063c52cc61ec77460cbafef27",
     "size": "7.1 GB"
     }
   ,
