@@ -52,7 +52,7 @@ def predict(input_volume_path, output_mask_path):
         data_out = np.zeros((1,) + out_dim + (1,), dtype=np.float32)
         tmp = data[i * out_dim[0]:i * out_dim[0] + out_dim[0]]
         data_out[0, :tmp.shape[0], ...,0] = tmp
-        preds[i] = model.predict(data_out)
+        preds[i] = model.predict(data_out, verbose=1)
 
     label_nda = np.reshape(preds, (np.prod(preds.shape[:2]),) + preds.shape[2:])[:data.shape[0]]
     label_nda = label_nda[..., 1]
