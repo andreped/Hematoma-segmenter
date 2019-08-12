@@ -37,7 +37,7 @@ def predict(input_volume_path, output_mask_path):
 
     # model path
     #model_path = input_volume_path.split("/")[:-2]
-    model_path = "/home/deepinfer/hematomasegmenter/nets/unet_model.h5" #"/".join(model_path) + "/nets/" + "unet_model.h5"
+    model_path = "/home/deepinfer/github/hematoma-segmenter/hematomasegmenter/nets/unet_model.h5" #"/".join(model_path) + "/nets/" + "unet_model.h5"
 
     print("Loading model...")
     # load trained model

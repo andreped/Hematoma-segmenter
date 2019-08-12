@@ -51,8 +51,7 @@ RUN mkdir /home/deepinfer/.keras
 RUN mkdir -p /home/deepinfer/github && \
     mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
-    pip install keras-tqdm && \
-    pip install matplotlib && \
+    pip install pip --upgrade && \
     git clone https://github.com/andreped/hematoma-segmenter.git    
 
 # Running test.sh will download the weights and keep them in docker
