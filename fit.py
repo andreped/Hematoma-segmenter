@@ -4,7 +4,8 @@ import sys
 import numpy as np
 import SimpleITK as sitk
 from progressbar import ProgressBar
-from tensorflow.keras.models import load_model
+#from tensorflow.keras.models import load_model # OBS!
+from tensorflow.python.keras.models import load_model
 #from tqdm import tqdm
 
 SEGMENTER_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'hematomasegmenter')
