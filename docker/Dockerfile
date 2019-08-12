@@ -40,6 +40,8 @@ RUN pip install numpy==1.16.4
 RUN pip install tqdm
 #RUN conda install -c anaconda tensorflow==1.13.1
 #RUN pip install numpy==1.16.4
+pip install --upgrade pytest
+pip install --upgrade coverage
 
 RUN pip install --upgrade pip && \	
     #pip install theano && \
@@ -56,7 +58,7 @@ RUN pip install --upgrade pip && \
 RUN mkdir -p /home/deepinfer/github && \
     #mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
-    pip install pycups && \
+    pip install pycrypto && \
     git clone https://github.com/andreped/hematoma-segmenter.git
 
 # make data folder and give deepinfer access to it
