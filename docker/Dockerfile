@@ -56,8 +56,8 @@ RUN mkdir -p /home/deepinfer/github && \
     git clone https://github.com/andreped/hematoma-segmenter.git    
 
 # Running test.sh will download the weights and keep them in docker
-RUN cd /home/deepinfer/github/hematoma-segmenter && \
-bash test.sh
+#RUN cd /home/deepinfer/github/hematoma-segmenter && \
+#bash test.sh
 
 EXPOSE 8888
 
