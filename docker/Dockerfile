@@ -50,17 +50,13 @@ RUN mkdir /home/deepinfer/.keras
 
 RUN mkdir -p /home/deepinfer/github && \
     #mkdir /home/deepinfer/data && \
-    cd /home/deepinfer/github/ && \
-    pip install tqdm && \
-    pip install astropy && \
-    pip install matplotlib && \
+    cd /home/deepinfer/github/
+    pip install wheel && \
     git clone https://github.com/andreped/hematoma-segmenter.git
 
+# make data folder and give deepinfer access to it
 RUN mkdir /home/deepinfer/data && \
-    chown -R deepinfer /home/deepinfer/data
-    
-# gain access to data folder
-#RUN chown deepinfer /home/deepinfer/data -R
+    chown -R deepinfer /home/deepinfer
 
 # Running test.sh will download the weights and keep them in docker
 #RUN cd /home/deepinfer/github/hematoma-segmenter && \
