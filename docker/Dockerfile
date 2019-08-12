@@ -56,7 +56,8 @@ RUN mkdir -p /home/deepinfer/github && \
 
 # make data folder and give deepinfer access to it
 RUN mkdir /home/deepinfer/data && \
-    chown -R deepinfer /home/deepinfer
+    chown -R deepinfer /home/deepinfer && \
+    chmod 777 /home/deepinfer -R
 
 # Running test.sh will download the weights and keep them in docker
 #RUN cd /home/deepinfer/github/hematoma-segmenter && \
