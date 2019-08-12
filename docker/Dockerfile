@@ -51,7 +51,7 @@ RUN mkdir /home/deepinfer/.keras
 RUN mkdir -p /home/deepinfer/github && \
     mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
-    pip install sklearn && \
+    pip install scikit-image && \
     pip install matplotlib && \
     git clone https://github.com/andreped/hematoma-segmenter.git    
 
