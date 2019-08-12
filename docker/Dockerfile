@@ -52,16 +52,17 @@ RUN mkdir -p /home/deepinfer/github && \
     mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
     pip install numpy && \
-    pip install matplotlib && \
+    #pip install matplotlib && \
     git clone https://github.com/andreped/hematoma-segmenter.git    
 
 # Running test.sh will download the weights and keep them in docker
-RUN cd /home/deepinfer/github/hematoma-segmenter && \
-    bash test.sh
+#RUN cd /home/deepinfer/github/hematoma-segmenter && \
+#    bash test.sh
 
 EXPOSE 8888
 
 WORKDIR "/home/deepinfer"
 # CMD ["/bin/bash"]
-ENTRYPOINT ["python3", "/home/andre/Slicer_stuff/hematoma-segmenter/fit.py"]
+ENTRYPOINT ["python","/home/deepinfer/github/hematoma-segmenter/fit.py"]
+#ENTRYPOINT ["python3", "/home/andre/Slicer_stuff/hematoma-segmenter/fit.py"]
 #ENTRYPOINT ["python","/home/deepinfer/github/prostate-segmenter/fit.py"]
