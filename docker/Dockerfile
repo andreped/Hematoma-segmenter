@@ -89,6 +89,6 @@ EXPOSE 8888
 
 WORKDIR "/home/deepinfer"
 # CMD ["/bin/bash"]
-ENTRYPOINT ["python","/home/deepinfer/github/hematoma-segmenter/fit.py"]
+ENTRYPOINT ["python3","/home/deepinfer/github/hematoma-segmenter/fit.py"]
 #ENTRYPOINT ["python3", "/home/andre/Slicer_stuff/hematoma-segmenter/fit.py"]
 #ENTRYPOINT ["python","/home/deepinfer/github/prostate-segmenter/fit.py"]
