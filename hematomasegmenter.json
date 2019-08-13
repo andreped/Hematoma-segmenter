@@ -16,8 +16,8 @@
     }
   ,
   "data_path": "/data",
-  //"pixel_types": "BasicPixelIDTypeList",
-  //"vector_pixel_types_by_component": "VectorPixelIDTypeList",
+  "pixel_types": "BasicPixelIDTypeList", // relevant for CT
+  "vector_pixel_types_by_component": "VectorPixelIDTypeList",
   "members": [
     {
       "name": "InputVolume",
