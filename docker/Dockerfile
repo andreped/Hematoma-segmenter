@@ -50,7 +50,9 @@ USER deepinfer
 
 # Python
 
-RUN pip3 install tensorflow==1.13.1
+RUN pip3 install tensorflow==1.13.1 && \
+    pip3 install SimpleITK && \
+    pip3 install progressbar2
 
 
 # install tensorflow properly on CONDA
