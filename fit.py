@@ -19,9 +19,13 @@ sys.path.insert(1, SEGMENTER_PATH)
 
 def predict(input_volume_path, output_mask_path):
 
+    input_volume_path = "/home/deepinfer/github/hematoma-segmenter/hematomasegmenter/data/10.nii.gz"
+
     print("Extracting data...")
     itkimage = sitk.ReadImage(input_volume_path)
     data = sitk.GetArrayFromImage(itkimage)
+
+    print(np.unique(data))
 
     print("Pre-processing...")
     # fix orientation
