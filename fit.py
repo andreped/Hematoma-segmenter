@@ -1,16 +1,21 @@
+# Silence warnings
+import warnings
+warnings.simplefilter(action="ignore", category=FutureWarning)
+warnings.simplefilter(action="ignore", category=UserWarning)
+warnings.simplefilter(action="ignore", category=RuntimeWarning)
+warnings.simplefilter(action='ignore', category=DeprecationWarning)
 import getopt
 import os
 import sys
 import numpy as np
 import SimpleITK as sitk
 from progressbar import ProgressBar
-#from tensorflow.keras.models import load_model # OBS!
 from tensorflow.python.keras.models import load_model
-#from tqdm import tqdm
 
 SEGMENTER_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'hematomasegmenter')
 print(SEGMENTER_PATH)
 sys.path.insert(1, SEGMENTER_PATH)
+https://github.com/mehrtash/Prostate-Segmenter/blob/master/fit.py
 
 #from prostatesegmenter.data import ProstateData
 #from prostatesegmenter.model import CNNModel
@@ -103,6 +108,10 @@ def main(argv):
     print("STARTING...")
     try:
         opts, args = getopt.getopt(argv, "hi:o:", ["InputVolume=", "OutputLabel="])
+        print('---')
+        print(opts)
+        print(args)
+        print('---')
     except getopt.GetoptError:
         print('usage: fit.py -InputVolume <InputVolumePath> --OutputLabel <OutputLabelPath>')
         sys.exit(2)
