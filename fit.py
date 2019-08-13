@@ -19,7 +19,7 @@ sys.path.insert(1, SEGMENTER_PATH)
 
 def predict(input_volume_path, output_mask_path):
 
-    input_volume_path = "/home/deepinfer/github/hematoma-segmenter/hematomasegmenter/data/10.nii.gz"
+    #input_volume_path = "/home/deepinfer/github/hematoma-segmenter/hematomasegmenter/data/10.nii.gz"
 
     print("Extracting data...")
     itkimage = sitk.ReadImage(input_volume_path)
@@ -31,6 +31,7 @@ def predict(input_volume_path, output_mask_path):
     # fix orientation
     data = np.rot90(data, k=2, axes=(1, 2))
     data = np.flip(data, axis=2)
+    data = np.flip(data, axis=1)
 
     # HU-clip
     limits = (0, 140)
@@ -68,7 +69,7 @@ def predict(input_volume_path, output_mask_path):
     print("Binarizing to produce label volume")
     th = 0.3
     label_nda[label_nda < th] = 0
-    label_nda[label_nda >= th] = 255
+    label_nda[label_nda >= th] = 1
     label_nda = label_nda.astype(np.uint8)
 
     print(np.unique(label_nda))
