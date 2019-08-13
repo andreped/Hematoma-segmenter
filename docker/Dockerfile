@@ -1,7 +1,11 @@
 
+# creates virtual ubuntu in docker image
 FROM ubuntu:18.04
+
+# maintainer of docker file
 MAINTAINER André Pedersen <andrped94@gmail.com>
 
+# set language, format and stuff
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 # installing python3
@@ -32,13 +36,14 @@ RUN pip3 install tensorflow==1.13.1 && \
 
 # clone git
 RUN mkdir -p /home/deepinfer/github && \
+    mkdir /home/deepinfer/data && \
     cd /home/deepinfer/github/ && \
     git clone https://github.com/andreped/hematoma-segmenter.git
 
 # make data folder and give deepinfer access to it
-RUN mkdir /home/deepinfer/data && \
-    chown -R deepinfer /home/deepinfer && \
-    chmod 777 /home/deepinfer -R
+#RUN mkdir /home/deepinfer/data && \
+#    chown -R deepinfer /home/deepinfer && \
+#    chmod 777 /home/deepinfer
 
 EXPOSE 8888
 

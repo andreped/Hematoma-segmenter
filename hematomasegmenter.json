@@ -11,10 +11,12 @@
   "docker":
     {
     "dockerhub_repository": "andreped/hematoma-segmenter-cpu:v1",
-    "digest": "sha256:a72f35a5b0892035f4f2b65405a79f8507e9d519bda53cab2fdf8a9acf10f254",
-    "size": "7.1 GB"
+    "digest": "sha256:c5a9e0b17d53b8a93aaf20401e23959e2954bcb2f86eee39524a11b3e7c33e73",
+    "size": "2.76 GB"
     }
   ,
+  "model_name": "hematoma-segmenter",
+  "data_path": "/data",
   "training":
     {
       "number of subjects": 25
