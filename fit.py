@@ -75,6 +75,7 @@ def predict(input_volume_path, output_mask_path):
     label_nda[label_nda < th] = 0
     label_nda[label_nda >= th] = 1
     label_nda = label_nda.astype(np.uint8)
+    
 
 
     print(np.unique(label_nda))
