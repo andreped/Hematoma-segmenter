@@ -15,7 +15,6 @@ from tensorflow.python.keras.models import load_model
 SEGMENTER_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'hematomasegmenter')
 print(SEGMENTER_PATH)
 sys.path.insert(1, SEGMENTER_PATH)
-https://github.com/mehrtash/Prostate-Segmenter/blob/master/fit.py
 
 #from prostatesegmenter.data import ProstateData
 #from prostatesegmenter.model import CNNModel
@@ -109,7 +108,6 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "hi:o:", ["InputVolume=", "OutputLabel="])
         print('---')
-        print(opts)
         print(args)
         print('---')
     except getopt.GetoptError:
