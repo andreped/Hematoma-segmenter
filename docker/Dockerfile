@@ -11,6 +11,10 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 # installing python3
 RUN apt-get update -y && \
     apt-get install python3-pip -y && \
+    #apt-get install software-properties-common python-software-properties && \
+    #apt-get update && \
+    #apt-get install python3.6 && \
+    python3 -V && \
     apt-get update && \
     pip3 -V && \
     pip3 install bs4 && \
@@ -30,7 +34,7 @@ RUN chown deepinfer $PYTHON_DIR -R
 USER deepinfer
 
 # Python
-RUN pip3 install tensorflow==1.13.1 && \
+RUN pip3 install tensorflow==1.14.0 && \
     pip3 install SimpleITK && \
     pip3 install progressbar2 && \
     pip3 install tqdm
