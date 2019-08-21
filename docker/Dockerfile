@@ -14,9 +14,7 @@ RUN apt-get update -y && \
     #apt-get install software-properties-common python-software-properties && \
     #apt-get update && \
     #apt-get install python3.6 && \
-    python3 -V && \
     apt-get update && \
-    pip3 -V && \
     pip3 install bs4 && \
     pip3 install requests && \
     apt-get install python3-lxml -y && \
@@ -35,6 +33,8 @@ USER deepinfer
 
 # Python
 RUN pip3 install tensorflow==1.14.0 && \
+    pip3 install scikit-image && \
+    pip3 install opencv-python && \
     pip3 install SimpleITK && \
     pip3 install progressbar2 && \
     pip3 install tqdm
