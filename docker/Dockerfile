@@ -43,6 +43,16 @@ RUN mkdir -p /home/deepinfer/github && \
     cd /home/deepinfer/github/ && \
     git clone https://github.com/andreped/hematoma-segmenter.git
 
+# need to download model
+RUN fileid=fileid="1F5fyrIj3lGAFa6DzKUjs0lvzFz1gK4KO" && \
+    filename="unet_model.h5" && \
+    cd /home/deepinfer/github/hematoma-segmenter/hematomasegmenter/ && \
+    mkdir nets && \
+    cd /home/deepinfer/github/hematoma-segmenter/hematomasegmenter/nets && \
+    curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null && \
+    curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename} && \
+    cd /home/deepinfer/github/
+
 # make data folder and give deepinfer access to it
 #RUN mkdir /home/deepinfer/data && \
 #    chown -R deepinfer /home/deepinfer && \
