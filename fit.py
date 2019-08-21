@@ -56,8 +56,8 @@ def predict(input_volume_path, output_mask_path):
     # split data into chunks and predict
     out_dim = (16, 512, 512)
     preds = np.zeros((int(np.ceil(data.shape[0] / out_dim[0])),) + out_dim + (2,)).astype(np.float32)
-    for i in tqdm(range(int(np.ceil(data.shape[0] / out_dim[0])))):
-        #print(i)
+    for i in range(int(np.ceil(data.shape[0] / out_dim[0]))):
+        print(i)
         data_out = np.zeros((1,) + out_dim + (1,), dtype=np.float32)
         tmp = data[i * out_dim[0]:i * out_dim[0] + out_dim[0]]
         data_out[0, :tmp.shape[0], ..., 0] = tmp

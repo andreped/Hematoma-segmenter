@@ -22,6 +22,9 @@ RUN apt-get update -y && \
     apt-get install libopenjp2-7 -y && \
     apt-get install libtiff5 -y
 
+# install curl
+RUN apt-get install curl -y
+
 # install git (OBS: using -y is conveniently to automatically answer yes to all the questions)
 RUN apt-get update && apt-get install -y git
 
@@ -44,10 +47,9 @@ RUN mkdir -p /home/deepinfer/github && \
     git clone https://github.com/andreped/hematoma-segmenter.git
 
 # need to download model
-RUN fileid=fileid="1F5fyrIj3lGAFa6DzKUjs0lvzFz1gK4KO" && \
+RUN fileid="1F5fyrIj3lGAFa6DzKUjs0lvzFz1gK4KO" && \
     filename="unet_model.h5" && \
-    cd /home/deepinfer/github/hematoma-segmenter/hematomasegmenter/ && \
-    mkdir nets && \
+    mkdir /home/deepinfer/github/hematoma-segmenter/hematomasegmenter/nets && \
     cd /home/deepinfer/github/hematoma-segmenter/hematomasegmenter/nets && \
     curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null && \
     curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename} && \
