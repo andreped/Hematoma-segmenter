@@ -5,28 +5,10 @@ import numpy as np
 import SimpleITK as sitk
 from progressbar import ProgressBar
 from tensorflow.python.keras.models import load_model
-from skimage.morphology import binary_opening, disk, ball, remove_small_holes, remove_small_objects, binary_dilation
-import cv2
 
 SEGMENTER_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'hematomasegmenter')
 print(SEGMENTER_PATH)
 sys.path.insert(1, SEGMENTER_PATH)
-
-def skull_strip(label_nda, data_orig):
-    out = data_orig.copy()
-    limits = (0, 100)
-    out[out < limits[0]] = limits[0]
-    out[out > limits[1]] = limits[0]
-    tmp = out.copy()
-    tmp[tmp > 0] = 1
-    tmp = cv2.morphologyEx(tmp, cv2.MORPH_OPEN, disk(9))
-    tmp = remove_small_objects(tmp.astype(bool), min_size=0.05*np.prod(tmp.shape)).astype(int)
-    tmps = tmp.copy()
-    for i in range(tmp.shape[0]):
-        tmps[i] = remove_small_holes(tmp[i].astype(bool), area_threshold=0.01*np.prod(tmp[i].shape)).astype(int)
-    #tmps = binary_dilation(tmps, ball(9))
-    label_nda[tmps == 0] = 0
-    return label_nda
 
 
 def predict(input_volume_path, output_mask_path):
@@ -91,8 +73,8 @@ def predict(input_volume_path, output_mask_path):
     label_nda[label_nda < th] = 0
     label_nda[label_nda >= th] = 1
 
-    print("Applying skull stripping for post-processing")
-    label_nda = skull_strip(label_nda, data_orig).astype(np.uint8)
+    #print("Applying skull stripping for post-processing")
+    #label_nda = skull_strip(label_nda, data_orig).astype(np.uint8)
 
     print(np.unique(label_nda))
 

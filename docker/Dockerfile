@@ -33,8 +33,6 @@ USER deepinfer
 
 # Python
 RUN pip3 install tensorflow==1.14.0 && \
-    pip3 install scikit-image && \
-    pip3 install opencv-python && \
     pip3 install SimpleITK && \
     pip3 install progressbar2 && \
     pip3 install tqdm
